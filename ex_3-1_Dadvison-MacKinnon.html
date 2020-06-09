@@ -4,7 +4,7 @@
 
 <title>ex_3-1_Dadvison-MacKinnon</title>
 
-<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=McVsTf0FArBiuBJipgQhlAa52I2-4vaaUgnGSnaVIC77FEdnL1H2p3KDyYRea_5W9shBbUAroey-D47j5nMpnPDZyW1pfgAUwLIsOz4uhycDtqhtmGeocaCuVz8F1sw-Nq1XJksxafkfjs8P3Vi-xpen78aLjT3u73O8JZ_oTrtvf-I6ehVoyTk1mZRPV6xibwnhrtJx_2SAtfyvHwwJcg" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=xRde8t_bKM-8dL_7X627VsECBDWtof683eEAtwvGwBdCDLkCkReteJJtddPm777Xc1YV-666qk3qgERvZQ5AqZIyaQlY8h9g0Zq1Bp0qZgc2UoaD1SidF-DpgjJngyeawcPxYzBD1CL7Ea6lH6nOV2oQBfJGfqMQmUz8YECsWrenKNR2E-eGRoxM_M8nBxKkZLd-7dhouoOukmmgd-kb9w" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
@@ -13188,7 +13188,7 @@ Then, considering $y_0=0$, we'll built a sample with $y_t \text{  and  } y_{t-1}
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[1] &#34;Sample Size: 25  |  Beta 1 Hat: 1.2974  |  Beta 1 Hat Bias: 0.2974  |  Beta 2 Hat: 0.7277  |  Beta 2 Hat Bias: -0.0723&#34;
+<pre>[1] &#34;Sample Size: 25  |  Beta 1 Hat: 1.3717  |  Beta 1 Hat Bias: 0.3717  |  Beta 2 Hat: 0.7126  |  Beta 2 Hat Bias: -0.0874&#34;
 </pre>
 </div>
 </div>
@@ -13212,7 +13212,7 @@ Then, considering $y_0=0$, we'll built a sample with $y_t \text{  and  } y_{t-1}
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="n">comparison</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;sample_n&quot;</span><span class="o">=</span><span class="nf">as.integer</span><span class="p">(),</span> <span class="s">&quot;beta_1_hat&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;beta_2_hat&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span>
                         <span class="s">&quot;beta_1_bias&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;beta_2_bias&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">())</span> <span class="c1">#vector to input parametric bootstrapped biases</span>
-<span class="nf">for </span><span class="p">(</span><span class="n">sample_n</span> <span class="n">in</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span> <span class="o">=</span> <span class="m">25</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="m">200</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">25</span><span class="p">)){</span>
+<span class="nf">for </span><span class="p">(</span><span class="n">sample_n</span> <span class="n">in</span> <span class="nf">seq</span><span class="p">(</span><span class="n">from</span> <span class="o">=</span> <span class="m">25</span><span class="p">,</span> <span class="n">to</span> <span class="o">=</span> <span class="m">400</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="m">25</span><span class="p">)){</span>
   <span class="c1">#sample size</span>
   <span class="c1">#Model (3.11): y_t = \beta_1 \iota + \beta_2 y_{t-1} + u,  u ~ IID(0, \sigma^2 I)</span>
   <span class="n">beta_1</span> <span class="o">=</span> <span class="m">1</span>
@@ -13263,15 +13263,23 @@ Then, considering $y_0=0$, we'll built a sample with $y_t \text{  and  } y_{t-1}
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>  sample_n beta_1_hat beta_2_hat beta_1_bias beta_2_bias
-1       25     1.3206     0.7151      0.3206     -0.0849
-2       50     1.2516     0.7477      0.2516     -0.0523
-3       75     1.2273     0.7487      0.2273     -0.0513
-4      100     1.1322     0.7699      0.1322     -0.0301
-5      125     1.1094     0.7774      0.1094     -0.0226
-6      150     1.0927     0.7802      0.0927     -0.0198
-7      175     1.1095     0.7774      0.1095     -0.0226
-8      200     1.1103     0.7785      0.1103     -0.0215
+<pre>   sample_n beta_1_hat beta_2_hat beta_1_bias beta_2_bias
+1        25     1.3698     0.7121      0.3698     -0.0879
+2        50     1.2395     0.7473      0.2395     -0.0527
+3        75     1.1526     0.7692      0.1526     -0.0308
+4       100     1.1183     0.7754      0.1183     -0.0246
+5       125     1.1284     0.7740      0.1284     -0.0260
+6       150     1.1081     0.7786      0.1081     -0.0214
+7       175     1.0640     0.7850      0.0640     -0.0150
+8       200     1.0642     0.7882      0.0642     -0.0118
+9       225     1.0651     0.7866      0.0651     -0.0134
+10      250     1.0432     0.7928      0.0432     -0.0072
+11      275     1.0595     0.7868      0.0595     -0.0132
+12      300     1.0561     0.7888      0.0561     -0.0112
+13      325     1.0587     0.7885      0.0587     -0.0115
+14      350     1.0486     0.7888      0.0486     -0.0112
+15      375     1.0291     0.7938      0.0291     -0.0062
+16      400     1.0439     0.7912      0.0439     -0.0088
 </pre>
 </div>
 </div>
@@ -13283,7 +13291,7 @@ Then, considering $y_0=0$, we'll built a sample with $y_t \text{  and  } y_{t-1}
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Note that, as the sample sizes increase, the intercept $\hat\beta_1$ and the slope $\hat\beta_2$ converges to their real values $\beta_1=1$ and $\beta_1=0.8$, respectively. Therefore, their biases also converge to zero, as we can see in the figures below.</p>
+<p>Note that, as the sample sizes increase, the intercept $\hat\beta_1$ and the slope $\hat\beta_2$ seem to converge to their real values $\beta_1=1$ and $\beta_1=0.8$, respectively. Therefore, their biases also seem to converge to zero, as we can see in the graphs below.</p>
 
 </div>
 </div>
@@ -13297,8 +13305,11 @@ Then, considering $y_0=0$, we'll built a sample with $y_t \text{  and  } y_{t-1}
 <span class="nf">par</span><span class="p">(</span><span class="n">mfrow</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
 <span class="nf">plot</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="s">&quot;Sample Size&quot;</span><span class="o">=</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_n</span><span class="p">,</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_bias</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;s&quot;</span><span class="p">,</span>
      <span class="n">main</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">beta[1]</span><span class="o">~</span><span class="s">&quot;Hat Bias x Sample Size&quot;</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="nf">max</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_bias</span><span class="p">)))</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">200</span><span class="p">,</span><span class="m">300</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
+
 <span class="nf">plot</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="s">&quot;Sample Size&quot;</span><span class="o">=</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_n</span><span class="p">,</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_bias</span><span class="p">),</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&quot;s&quot;</span><span class="p">,</span>
      <span class="n">main</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">beta[2]</span><span class="o">~</span><span class="s">&quot;Hat Bias x Sample Size&quot;</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_bias</span><span class="p">),</span><span class="m">0</span><span class="p">))</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">v</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="m">200</span><span class="p">,</span><span class="m">300</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13317,129 +13328,132 @@ Then, considering $y_0=0$, we'll built a sample with $y_t \text{  and  } y_{t-1}
 
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,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
-YII="
+<img src="data:image/png;base64,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"
 >
 </div>
 
@@ -13452,15 +13466,9 @@ YII="
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>It seems that the assumption that $y_0=0$ is not a very reasonable for the stationary model (3.11). It would be more reasonable either to assume that $y_0$ is equal to its unconditional mean, which is $$\frac{\beta_1}{(1-\beta_2)},$$ or that $y_0$ is a drawing from its unconditional distribution, which is $$N(\frac{\beta_1}{1-\beta_2}, \frac{1}{1-\beta^2_2}.$$</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Different ways of generating $y_0$ yield different results.</p>
+<p>Analyzing the graphs above, we see that the bias of both estimators drop by almost half increasing the sample size from 25 to 50, and drop to $\frac{1}{4}$ and $\frac{1}{3}$ for $\hat\beta_1$ and $\hat\beta_2$, respectively. And both biases seem to stabilize close to zero.
+$$$$
+It seems that the assumption that $y_0=0$ is not a very reasonable for the stationary model (3.11) - see Section 7.6. It would be more reasonable either to assume that $y_0$ is equal to its unconditional mean, which is $$\frac{\beta_1}{(1-\beta_2)},$$ or that $y_0$ is a drawing from its unconditional distribution, which is $$N\bigg(\frac{\beta_1}{1-\beta_2}, \frac{1}{1-\beta^2_2}\bigg).$$ Different ways of generating $y_0$ yield different results.</p>
 
 </div>
 </div>
