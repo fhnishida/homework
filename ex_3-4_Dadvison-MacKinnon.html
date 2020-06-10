@@ -4,7 +4,7 @@
 
 <title>ex_3-4_Dadvison-MacKinnon</title>
 
-<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=yoUoK9wiKKLGdLdyK07TxpneI4J17Rmgf4xKmiFajUTI1YfUp9vU3wrIeOtfKZxE_0LBau42Q69HsU4fKUwKMVEmk-KrrinkzJns95NXx4kMLRS4pf186iAT8veCgCCvhlgOkim-fjylREwGA4fYn0i-rgbILVfA51TlwhrYYSITnScYiH3tQtlO_ZQwFHXVeYECevMZwBqWtvOP2y4Fdg" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=12eNT0ZoTnIVb76hQ83Zh5z2wsoi_GsWSIXhMKcoqhFZDw4I3wU_yYh-90SjMH4_crI3ZrrW1im88vznKi5z3CCSTGIFtG9OMtoNS_t8V7ndbzmO8bUF_ikrxrTH0sZbQEshMyKw76ITFoVvalvRBDNOvtrXN06MdDQr2ZmLDvIZkGneXzCCeEE_3nnBumNGNyVYH-QLbOVmBfiXze5eYg" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
@@ -13798,7 +13798,7 @@ First, note that EDF variance is not equal to Normal CDF variance:</p>
 <div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Comparing variance of distribution of normal CDF variance with variance of EDF</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Comparing variance of distribution of normal CDF variance with adjusted variance of EDF</span>
 <span class="n">adjusted_EDF_var</span> <span class="o">=</span> <span class="nf">var</span><span class="p">(</span><span class="n">residuals</span><span class="o">*</span><span class="n">sigma</span><span class="o">/</span><span class="n">sigma_EDF</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;EDF adjusted variance =&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">adjusted_EDF_var</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> <span class="s">&quot;~&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">sigma^2</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> <span class="s">&quot;= Normal CDF variance&quot;</span><span class="p">))</span>
 </pre></div>
