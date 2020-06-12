@@ -4,7 +4,7 @@
 
 <title>ex_3-3_Dadvison-MacKinnon</title>
 
-<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=bHyvIbX8-JD3U19d6hykKUl-YGv3NxiHAyLrNMEUiKvCT6A2XGNbCmxchKGNVurMkeO7cy4mfFJMgy1Lb6QISZBrnhCWMPNe9S0Pi1E4a2avzDTOvDklpIPaqzSXmlaEjCauoxh52ZQ_R6LrGdc8lSGpNdjaPIsuI-rDkz5LJ7kKx827NyJzIfbFeQAgaXSavGuvPW_mKQ6HInkNj-hPNA" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=DQ-SChJ_uCbhBJwt334Rnhl4tY8Z5gS1P0fhuEnSF8lOTCMsK-_sOBfPeFUVcrSjTxLINidRWnkLCJuYho0q4qHXLyJVWUlXKP4kTmXIwt8LVkvQNiREpDSw_mtVCvRIHinj045OH26NlfaWU7qY6clYjViZ8gGUgREetod4orL6hFqYofCmhrBJG_yEunn7ubgSDPFXrDyOZib_2uZ9Nw" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
@@ -13091,18 +13091,17 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Load consumption.data.txt</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Load consumption.data.txt</span>
 <span class="n">data</span> <span class="o">=</span> <span class="nf">read.table</span><span class="p">(</span><span class="s">&quot;consumption.data.txt&quot;</span><span class="p">,</span><span class="n">col.names</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;n&quot;</span><span class="p">,</span><span class="s">&quot;year&quot;</span><span class="p">,</span><span class="s">&quot;quarter&quot;</span><span class="p">,</span><span class="s">&quot;income&quot;</span><span class="p">,</span> <span class="s">&quot;consumption&quot;</span><span class="p">))</span>
 
 <span class="c1">#Defining number of simulations and creating empty vector to save the results</span>
-<span class="n">B</span><span class="o">=</span><span class="m">200</span>
+<span class="n">B</span> <span class="o">=</span> <span class="m">200</span>
 <span class="n">comparison</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;sample_size&quot;</span><span class="o">=</span><span class="nf">as.integer</span><span class="p">(),</span>
                         <span class="s">&quot;beta_1_sim1&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;beta_2_sim1&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;sigma_sim1&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span>
-                        <span class="s">&quot;beta_1_sim2&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;beta_2_sim2&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;sigma_sim2&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span>
-                        <span class="s">&quot;beta_1_sim3&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;beta_2_sim3&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;sigma_sim3&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">())</span>
+                        <span class="s">&quot;beta_1_sim2&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;beta_2_sim2&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">(),</span> <span class="s">&quot;sigma_sim2&quot;</span><span class="o">=</span><span class="nf">as.double</span><span class="p">())</span>
 </pre></div>
 
     </div>
@@ -13113,26 +13112,98 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Our first simulation is using the exact order of the consumption dataset's observations and performing regression with selected observations to save $\beta_1, \beta_2 \text{ and } \sigma$ estimates in $comparison$ vector, that is empty yet.
-We begin by selecting the first three observations, for each time we run a simulation, we increase one more observation (always follow the defined order) until we reach a regression with 200 observations, that is, reaching 198 regressions.</p>
+<p>Then, we will perform a linear regression to get the estimates $\beta_1$ and $\beta_2$, and get its $\sigma$ of the original data set.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Running regression to get the estimates and sigma of the original data set</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">consumption</span><span class="p">)</span> <span class="o">~</span> <span class="nf">log</span><span class="p">(</span><span class="n">income</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span> <span class="p">;</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span>
+<span class="n">coeff</span> <span class="o">=</span> <span class="n">reg</span><span class="o">$</span><span class="n">coefficients</span>
+<span class="n">beta_1</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;(Intercept)&quot;</span><span class="n">]</span>
+<span class="n">beta_2</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;log(income)&quot;</span><span class="n">]</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">sigma</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>
+Call:
+lm(formula = log(consumption) ~ log(income), data = data)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.113024 -0.026878  0.008358  0.025481  0.090263 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 0.417736   0.048988   8.527 3.84e-15 ***
+log(income) 0.956939   0.004046 236.543  &lt; 2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.03581 on 198 degrees of freedom
+Multiple R-squared:  0.9965,	Adjusted R-squared:  0.9965 
+F-statistic: 5.595e+04 on 1 and 198 DF,  p-value: &lt; 2.2e-16
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>First, we will perform a parametric bootstrap to generate the first simulated data set, then we will perform 198 regressions from with number of observations from 3 to 200 and save the estimates into an empty vector.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#First Simulation - Simulation by original observations order</span>
+<span class="c1">#Parametric Bootstrap - considering the residuals have normal distribution with mean 0</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">4321</span><span class="p">)</span>
+<span class="n">residual_boot</span> <span class="o">=</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="nf">cbind</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="nf">log</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">))</span>
+
+<span class="n">log_consumption_sim1</span> <span class="o">=</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">coeff</span> <span class="o">+</span> <span class="n">residual_boot</span>
+
+<span class="n">data_sim1</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;log_consumption_sim1&quot;</span> <span class="o">=</span> <span class="n">log_consumption_sim1</span><span class="p">,</span> <span class="s">&quot;log_income&quot;</span> <span class="o">=</span> <span class="nf">log</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">))</span>
+
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">3</span><span class="o">:</span><span class="n">B</span><span class="p">){</span>
-  <span class="n">reg</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">consumption[1</span><span class="o">:</span><span class="n">i]</span><span class="p">)</span> <span class="o">~</span> <span class="nf">log</span><span class="p">(</span><span class="n">income[1</span><span class="o">:</span><span class="n">i]</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span> <span class="c1">#; summary(reg)</span>
-  <span class="n">coeff</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+  <span class="n">reg</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">log_consumption_sim1[1</span><span class="o">:</span><span class="n">i]</span> <span class="o">~</span> <span class="n">log_income[1</span><span class="o">:</span><span class="n">i]</span><span class="p">,</span> <span class="n">data_sim1</span><span class="p">)</span> <span class="c1">#; summary(reg)</span>
+  <span class="n">coeff_sim1</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
   
   <span class="c1">#Saving the regression estimates and standard deviation</span>
   <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;sample_size&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">i</span>
-  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_1_sim1&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
-  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_2_sim1&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;log(income[1:i])&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
+  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_1_sim1&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff_sim1[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
+  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_2_sim1&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff_sim1[</span><span class="s">&quot;log_income[1:i]&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
   <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;sigma_sim1&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">sigma</span> 
 <span class="p">}</span>
 </pre></div>
@@ -13145,33 +13216,32 @@ We begin by selecting the first three observations, for each time we run a simul
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The second simulation is almost the same as the first. We'll begin by sorting arbitrarily the dataset exact order, resulting in the same dataset, but the observations will almost surely be in different rows, that is, having a new order of the observations.
-$$$$
-Then, we'll also perform the regression and saving the estimates in $comparison$ vector. We also begin the three observations and we'll continue to add one variable, following the new arbitrarily order, in each simulation.
-For example:
-$$$$
-$\underline{\text{In Simulation 1}}$: we'll begin by running the regression with thre first observations numbers 1, 2 and 3; the following regression will have 4 observations: numbers 1, 2, 3 and 4; until reaching the regression with all 200 observations.
-$$$$
-$\underline{\text{In Simulation 2}}$: we'll begin by running the regression with three arbitrarily observations, say, numbers 20, 175 and 42; the following regression will also have the past 3 observations + 1 arbitrarily one, say, numbers 20, 175, 42 and 66; until reaching the regression with all 200 observations.</p>
+<p>For the the second simulation, we will replicate the same method done for the first simulation.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Second Simulation - Sample arbitrarily order of observations then Simulation by the new order</span>
-<span class="n">sampled_rows</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">B</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1">#Second Simulation  </span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="m">1234</span><span class="p">)</span>
+<span class="n">residual_boot</span> <span class="o">=</span> <span class="nf">rnorm</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="n">sd</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="n">log_consumption_sim2</span> <span class="o">=</span> <span class="n">X</span> <span class="o">%*%</span> <span class="n">coeff</span> <span class="o">+</span> <span class="n">residual_boot</span>
+
+<span class="n">data_sim2</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="s">&quot;log_consumption_sim2&quot;</span> <span class="o">=</span> <span class="n">log_consumption_sim2</span><span class="p">,</span> <span class="s">&quot;log_income&quot;</span> <span class="o">=</span> <span class="nf">log</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">income</span><span class="p">))</span>
+<span class="n">i</span><span class="o">=</span><span class="m">3</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">3</span><span class="o">:</span><span class="n">B</span><span class="p">){</span>
-  
-  <span class="n">reg</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">consumption[sampled_rows[1</span><span class="o">:</span><span class="n">i]]</span><span class="p">)</span> <span class="o">~</span> <span class="nf">log</span><span class="p">(</span><span class="n">income[sampled_rows[1</span><span class="o">:</span><span class="n">i]]</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span> <span class="c1">#; summary(reg)</span>
-  <span class="n">coeff</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
+  <span class="n">reg</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="n">log_consumption_sim2[1</span><span class="o">:</span><span class="n">i]</span> <span class="o">~</span> <span class="n">log_income[1</span><span class="o">:</span><span class="n">i]</span><span class="p">,</span> <span class="n">data_sim2</span><span class="p">)</span> <span class="c1">#; summary(reg)</span>
+  <span class="n">coeff_sim2</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
   
   <span class="c1">#Saving the regression estimates and standard deviation</span>
-  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_1_sim2&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
-  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_2_sim2&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;log(income[sampled_rows[1:i]])&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
+  <span class="c1">#comparison[i-2,&quot;sample_size&quot;] = i</span>
+  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_1_sim2&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff_sim2[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
+  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_2_sim2&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff_sim2[</span><span class="s">&quot;log_income[1:i]&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
   <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;sigma_sim2&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">sigma</span> 
 <span class="p">}</span>
 </pre></div>
@@ -13184,66 +13254,25 @@ $\underline{\text{In Simulation 2}}$: we'll begin by running the regression with
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the third simulation, in each loop, we'll sample the observations without needing to have the same previous selected observations. For example:
-$$$$
-$\underline{\text{In Simulation 3}}$: we'll begin by running the regression with three arbitrarily observations, say, numbers 20, 175 and 42; the following regression will sample arbitrarily new 4 observations, say, numbers 65, 187, 155 and 20; until reaching the regression with all 200 observations.</p>
+<p>Then, by showing the 6 first lines and the 6 last lines of the filled when running the three simulations, we can observe that in the first regression we have different estimates for $\beta_1, \beta_2 \text{ and } \sigma$ in the 3 simulations. But for the last 6 lines, we have the estimates gets closer.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1">#Third Simulation - Sampling by observations arbitrarily in every simulation</span>
-<span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">3</span><span class="o">:</span><span class="n">B</span><span class="p">){</span>
-  <span class="n">sampled_rows</span> <span class="o">=</span> <span class="nf">sample</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="n">B</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">replace</span> <span class="o">=</span> <span class="kc">FALSE</span><span class="p">)</span>
-  <span class="n">reg</span> <span class="o">=</span> <span class="nf">lm</span><span class="p">(</span><span class="nf">log</span><span class="p">(</span><span class="n">consumption[sampled_rows]</span><span class="p">)</span> <span class="o">~</span> <span class="nf">log</span><span class="p">(</span><span class="n">income[sampled_rows]</span><span class="p">),</span> <span class="n">data</span><span class="p">)</span> <span class="c1">#; summary(reg)</span>
-  <span class="n">coeff</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">coefficients</span>
-  
-  <span class="c1">#Saving the regression estimates and standard deviation</span>
-  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_1_sim3&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;(Intercept)&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
-  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;beta_2_sim3&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="n">coeff[</span><span class="s">&quot;log(income[sampled_rows])&quot;</span><span class="p">,</span> <span class="s">&quot;Estimate&quot;</span><span class="n">]</span>
-  <span class="n">comparison[i</span><span class="m">-2</span><span class="p">,</span><span class="s">&quot;sigma_sim3&quot;</span><span class="n">]</span> <span class="o">=</span> <span class="nf">summary</span><span class="p">(</span><span class="n">reg</span><span class="p">)</span><span class="o">$</span><span class="n">sigma</span> 
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Then, by showing the 6 first lines and the 6 last lines of the filled when running the three simulations, we can observe that in the first regression we have different estimates for $\beta_1, \beta_2 \text{ and } \sigma$ in the 3 simulations. But for the last 6 lines, we have really close estimates, since, by reaching 200 observations, all 3 simulations will perform the same regression with the same 200 observations.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;First 6 lines ==================================================================\n&quot;</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">cat</span><span class="p">(</span><span class="s">&quot;First 6 lines\n&quot;</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">head</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="s">&quot;size&quot;</span><span class="o">=</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span>
-        <span class="s">&quot;b_1_s1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim1</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="s">&quot;b_2_s1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim1</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>
-                 <span class="s">&quot;sig_s1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim1</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>
-        <span class="s">&quot;b_1_s2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim2</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="s">&quot;b_2_s2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim2</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>
-                 <span class="s">&quot;sig_s2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim2</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>
-        <span class="s">&quot;b_1_s3&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="s">&quot;b_2_s3&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim3</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>
-                 <span class="s">&quot;sig_s3&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim3</span><span class="p">,</span><span class="m">5</span><span class="p">))))</span>
+        <span class="s">&quot;beta1_sim1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim1</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="s">&quot;beta2_sim1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim1</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="s">&quot;sigma_sim1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim1</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>
+        <span class="s">&quot;beta1_sim2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim2</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="s">&quot;beta2_sim2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim2</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="s">&quot;sigma_sim2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim2</span><span class="p">,</span><span class="m">6</span><span class="p">))))</span>
 
-<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;\nLast 6 lines ==================================================================\n&quot;</span><span class="p">)</span>
+<span class="nf">cat</span><span class="p">(</span><span class="s">&quot;\nLast 6 lines\n&quot;</span><span class="p">)</span>
 <span class="nf">print</span><span class="p">(</span><span class="nf">tail</span><span class="p">(</span><span class="nf">cbind</span><span class="p">(</span><span class="s">&quot;size&quot;</span><span class="o">=</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span>
-                 <span class="s">&quot;b_1_s1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim1</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="s">&quot;b_2_s1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim1</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>
-                 <span class="s">&quot;sig_s1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim1</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>
-                 <span class="s">&quot;b_1_s2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim2</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="s">&quot;b_2_s2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim2</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>
-                 <span class="s">&quot;sig_s2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim2</span><span class="p">,</span><span class="m">5</span><span class="p">),</span>
-                 <span class="s">&quot;b_1_s3&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim3</span><span class="p">,</span><span class="m">3</span><span class="p">),</span> <span class="s">&quot;b_2_s3&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim3</span><span class="p">,</span><span class="m">4</span><span class="p">),</span>
-                 <span class="s">&quot;sig_s3&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim3</span><span class="p">,</span><span class="m">5</span><span class="p">))))</span>
+         <span class="s">&quot;beta1_sim1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim1</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="s">&quot;beta2_sim1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim1</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="s">&quot;sigma_sim1&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim1</span><span class="p">,</span><span class="m">6</span><span class="p">),</span>
+         <span class="s">&quot;beta1_sim2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_1_sim2</span><span class="p">,</span><span class="m">4</span><span class="p">),</span> <span class="s">&quot;beta2_sim2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim2</span><span class="p">,</span><span class="m">5</span><span class="p">),</span> <span class="s">&quot;sigma_sim2&quot;</span><span class="o">=</span><span class="nf">round</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim2</span><span class="p">,</span><span class="m">6</span><span class="p">))))</span>
 </pre></div>
 
     </div>
@@ -13260,23 +13289,23 @@ $\underline{\text{In Simulation 3}}$: we'll begin by running the regression with
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>First 6 lines ==================================================================
-     size b_1_s1  b_2_s1  sig_s1 b_1_s2 b_2_s2  sig_s2 b_1_s3 b_2_s3  sig_s3
-[1,]    3 20.024 -0.8265 0.02028  0.900 0.9172 0.05685  0.835 0.9241 0.03480
-[2,]    4 14.405 -0.3153 0.01468  0.914 0.9157 0.04286  0.418 0.9560 0.05308
-[3,]    5 17.229 -0.5724 0.01801  1.036 0.9050 0.04293  0.567 0.9459 0.02815
-[4,]    6 19.012 -0.7350 0.02281  1.017 0.9067 0.03746  0.797 0.9250 0.02823
-[5,]    7 18.781 -0.7141 0.02040  0.345 0.9601 0.04599  0.534 0.9484 0.04506
-[6,]    8 13.679 -0.2502 0.02392  0.477 0.9498 0.04729  0.032 0.9888 0.04651
+<pre>First 6 lines
+     size beta1_sim1 beta2_sim1 sigma_sim1 beta1_sim2 beta2_sim2 sigma_sim2
+[1,]    3    36.9484   -2.36626   0.014192    42.5534   -2.87607   0.049605
+[2,]    4    -5.8564    1.52804   0.025794    31.0806   -1.83229   0.035649
+[3,]    5    -3.9142    1.35117   0.023003    24.3908   -1.22308   0.043157
+[4,]    6    -6.3367    1.57209   0.030127    22.3771   -1.03944   0.041831
+[5,]    7     1.2087    0.88606   0.030031    13.4585   -0.22856   0.040564
+[6,]    8     1.3717    0.87124   0.027419    10.6110    0.03032   0.037965
 
-Last 6 lines ==================================================================
-       size b_1_s1 b_2_s1  sig_s1 b_1_s2 b_2_s2  sig_s2 b_1_s3 b_2_s3  sig_s3
-[193,]  195  0.462 0.9532 0.03423  0.406 0.9579 0.03593  0.412 0.9574 0.03549
-[194,]  196  0.454 0.9538 0.03439  0.410 0.9576 0.03598  0.434 0.9556 0.03583
-[195,]  197  0.446 0.9545 0.03464  0.410 0.9576 0.03589  0.418 0.9569 0.03604
-[196,]  198  0.438 0.9552 0.03494  0.415 0.9572 0.03595  0.420 0.9567 0.03576
-[197,]  199  0.428 0.9560 0.03531  0.415 0.9571 0.03588  0.419 0.9568 0.03589
-[198,]  200  0.418 0.9569 0.03581  0.418 0.9569 0.03581  0.418 0.9569 0.03581
+Last 6 lines
+       size beta1_sim1 beta2_sim1 sigma_sim1 beta1_sim2 beta2_sim2 sigma_sim2
+[193,]  195     0.4797    0.95193   0.033065     0.2922    0.96719   0.036030
+[194,]  196     0.4831    0.95164   0.033039     0.2908    0.96731   0.035947
+[195,]  197     0.4817    0.95176   0.032965     0.2889    0.96747   0.035872
+[196,]  198     0.4778    0.95210   0.032965     0.2938    0.96705   0.035900
+[197,]  199     0.4764    0.95222   0.032892     0.2938    0.96705   0.035809
+[198,]  200     0.4687    0.95288   0.033143     0.3031    0.96625   0.036169
 </pre>
 </div>
 </div>
@@ -13288,27 +13317,24 @@ Last 6 lines ==================================================================
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Then, we'll plot $\beta_2$ estimates by the number of observations in the regression for Simulation 1 (black - following pre-defined order), Simulation 2 (blue - sorting arbitrarily and following this new order) and Simulation 3 (orange - each loop is performed with a new arbitrarily sampled observations).
-$$$$
-We can see that, in Simulation 1 we have some extreme estimates for $\beta_2$ when running regression with small number of observations - this happends since the first observations of the original dataset also have some extreme values that is smoothed when adding more observations.
-$$$$
-In Simulation 2 and 3, the estimates don't have the same extreme values for $\beta_2$, since the arbitrarily sampling smooths them.</p>
+<p>Then, we'll plot $\beta_2$ estimates by the number of observations in the regression for Simulation 1 (black), Simulation 2 (blue) and a horizontal dotted orange line with the exact value. We can see that, in both simulations, the estimates get close to the actual value with regressions starting with 40 to 50 observations.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">7</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">6</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">warn</span><span class="o">=</span><span class="m">-1</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">6</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim1</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">,</span>
      <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim1</span><span class="p">,</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim2</span><span class="p">),</span> <span class="nf">max</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim1</span><span class="p">,</span><span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim2</span><span class="p">)),</span>
-     <span class="n">main</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">beta[2]</span><span class="o">~</span><span class="s">&quot;by sample size: 1 (black), 2 (blue), 3 (orange)&quot;</span><span class="p">),</span>
+     <span class="n">main</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">beta[2]</span><span class="o">~</span><span class="s">&quot;by simulations: Sim 1 (black), Sim 2 (blue)&quot;</span><span class="p">),</span>
      <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Sample Size&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">beta[2]</span><span class="o">~</span><span class="s">&quot;estimates&quot;</span><span class="p">))</span>
 <span class="nf">lines</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">comparison</span><span class="o">$</span><span class="n">beta_2_sim3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="n">beta_2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13325,164 +13351,123 @@ In Simulation 2 and 3, the estimates don't have the same extreme values for $\be
 
 
 
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAALQCAMAAACde6BzAAAANlBMVEUAAAAAAP9NTU1oaGh8
+<img src="data:image/png;base64,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
-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
-AUZ0AAAAAElFTkSuQmCC"
+ABJ0AAASdAHeZh94AAAXjklEQVR4nO3diXaqSABF0XqAAyrQ/P/PNqMUs1LIcHP2Wt1JjEoF
+j1iCT00KCDF7DwBYE0FDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFD
+CkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFDCkFD
+CkFDCkFDCkFDCkFDCkFDCkFDyrmCNt8M98MzD5zt4X2/tI7oFhhjLmHy+TXdu2d6mWvvsjPX
+ZP36al6rDC26etm5n85DGx/Qqo4XdHLzjHeNB3+3UdDVSQ5B303Fe356Tc/emTyvf9nPg64u
+7jq0W3Xum+vQRge0rsMFHXtBlMbB8L3ZZZs5Zjzo5Z7GC/O7ZHQ1Jvr0It2l3sxAcV8E/exE
+uGhokTH5pjw05uE4tLEBrexwQd+KlGPjD/3yLEH771buxWPzvLvxOktNqlWwOOhsFInz0K5V
+yA/7Blk0tLEBrexwQXtTD/fZqS/feLd8vdTNJ8Z6JEtuvjFB2FxF9r+Hb/xsgxJ6xn+0rrv8
+Wv30uGSbyGtUnFCofxPnU6BbXF8ivlRnG1iYPc56QPUohofS/NV+3PmTq61g628eGG1aznJ9
+exjZo1z+ZXCL+OXQPNO73PTQ2iu3PYHcYhN9uKDr+Wsw/MtnWVu+FfdNsZ4e1lqKvfLX/vua
+jCnnjK/b+3KDQQfmfcXtoJ/tCWe1hGhwYW++afc6OpT3GcLefbi+n7b+5v5o3yMM3r+OPa8s
+yBu4db8eWmc4c0Nrr9x6HVXPKYcGtLKDBv30Bp8V5pulOE2uxRq9lzdNYJpn4IHJtxZRUDRe
+3VR5itkFyi/NrZ62boHQBNkCs6m7fYb8S+KZa1IsMSlO8bPlZ9d/7S6sLZtyXh7WXzA6lP5f
+XntvzVp/88Bosw3tPcmHEVa/fvf83pI6Dy0fztX6fnxonZXr5TPw+FauveEBreyQQfte5xG5
++eWl+HrNb724naf1fTkLqW6qV3FCsSaToXVe/L/a2rfPkH+5V0u8mHtxSvHIHjUP1p0pT63c
+4F3CyFrS0FC6f3njfdu3/uaB0VZT4ah4pMgnAd57Czv4EL9kaPlN0twJpobWXrlhub6yZd7H
+B7SuQwadx3of/mV5W72Klv1ySmBtT3xzeSbNmdNWm+ngOm931As6aC3RmLg5W2thXcm9nBb4
+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
+ECtpH2aJAAAAAElFTkSuQmCC"
 >
 </div>
 
@@ -13495,27 +13480,26 @@ AUZ0AAAAAElFTkSuQmCC"
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the graph of standard deviation $\sigma$ by the sample size we can see the the Simulation 3 (orange/yellow) seems to have more variance, but doesn't seems to be biased since its values is around the converging value.
+<p>For the standard deviation, we can see that the second simulation gets close to the actual value within regression with 60 observations, then move away a little and converges when regresion uses almost all 200 observatins.
 $$$$
-But the Simulations 1 (black) and 2 (blue), seem to be biased, since both simulations carries over the observations previously chosen in the past regressions when performing new ones - so if one begins biased, it tends to stay biased and converging to the final estimated value - when performing the regression with all 200 observations.
-$$$$
-For all 3 Simulations, the standard deviations seem to have higher variance with small number of observations and get lower when reaching the maximum number of observations.</p>
+The first simulation gets more or less close with regression with 100 observations but didn't converge to the actual standard deviation even with regressions with all 200 observations.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">7</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">6</span><span class="p">)</span>
+<div class=" highlight hl-r"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">6</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">5</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim1</span><span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&quot;line&quot;</span><span class="p">,</span>
      <span class="n">ylim</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="nf">min</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim1</span><span class="p">,</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim2</span><span class="p">),</span> <span class="nf">max</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim1</span><span class="p">,</span><span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim2</span><span class="p">)),</span>
-     <span class="n">main</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">sigma</span><span class="o">~</span><span class="s">&quot;by sample size: 1 (black), 2 (blue), 3 (orange)&quot;</span><span class="p">),</span>
+     <span class="n">main</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">sigma</span><span class="o">~</span><span class="s">&quot;by simulations: Sim 1 (black), Sim 2 (blue)&quot;</span><span class="p">),</span>
      <span class="n">xlab</span> <span class="o">=</span> <span class="s">&quot;Sample Size&quot;</span><span class="p">,</span> <span class="n">ylab</span><span class="o">=</span><span class="nf">expression</span><span class="p">(</span><span class="n">sigma</span><span class="o">~</span><span class="s">&quot;estimates&quot;</span><span class="p">))</span>
 <span class="nf">lines</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim2</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;blue&quot;</span><span class="p">)</span>
-<span class="nf">lines</span><span class="p">(</span><span class="n">comparison</span><span class="o">$</span><span class="n">sample_size</span><span class="p">,</span> <span class="n">comparison</span><span class="o">$</span><span class="n">sigma_sim3</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">)</span>
+<span class="nf">abline</span><span class="p">(</span><span class="n">h</span> <span class="o">=</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;orange&quot;</span><span class="p">,</span> <span class="n">lty</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">warn</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -13532,234 +13516,159 @@ For all 3 Simulations, the standard deviations seem to have higher variance with
 
 
 
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
 
 <div class="output_png output_subarea ">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA0gAAALQCAMAAACde6BzAAAANlBMVEUAAAAAAP9NTU1oaGh8
+<img src="data:image/png;base64,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
-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
-AEQCEOA/S0lrsUJJD+oAAAAASUVORK5CYII="
+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
+hAZR/A/QxMbkUOw4wAAAAABJRU5ErkJggg=="
 >
 </div>
 
