@@ -4,7 +4,7 @@
 
 <title>ex_3-4_Dadvison-MacKinnon</title>
 
-<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=TG7fUDCqu6zWBGHgF1LFhSMhvTYEO2RhM2lxSOWuMwMdCbL2Exh66IxT_Li2QgmDS7B2wyQJjIx3vAx425Bpeg8wsz0CwRVp-yr4aVddlA6ZDg7VSqLq-rClQyNW08C_Wir-VTOlxeg-5JvV8-aoe7QSUjjt4rt1sghFyyu_J87vT9C75u6cKTc72byAZKw1SQMI-9nPqJsVAWUjVtAjIA" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=BQtlyIecq42QFTenPCEUELN643tZITTNeKYCyN6OlZyZrY6Y_X6z2xkCpgppMJZ-_Ljf7j6YfMhN_lm1cudhZcpAr4q5cHgLfR_tbIvKJ1uIvbYbX-ixBnbmbCG9Msg_-_ijGK4AVIejHJcBIXxc7tJ97iwLAH2I37x9XEehpqPnI0XkHdADK6oUSxiTDOCU9Ne2hCz8KFnh6BeQKVVEDg" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
@@ -13822,7 +13822,7 @@ First, note that EDF variance is not equal to Normal CDF variance:</p>
 <div class=" highlight hl-r"><pre><span></span><span class="c1">#Comparing variance of distribution of normal CDF variance with variance of EDF</span>
 <span class="n">var_EDF</span> <span class="o">=</span> <span class="nf">sum</span><span class="p">(</span><span class="n">residuals_ecdf^2</span><span class="p">)</span><span class="o">/</span><span class="m">200</span>
 <span class="n">sigma_EDF</span> <span class="o">=</span> <span class="nf">sqrt</span><span class="p">(</span><span class="n">var_EDF</span><span class="p">)</span>
-<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;EDF variance =&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">var_EDF</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> <span class="s">&quot;&gt;&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">sigma^2</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> <span class="s">&quot;Normal CDF variance&quot;</span><span class="p">))</span>
+<span class="nf">print</span><span class="p">(</span><span class="nf">paste</span><span class="p">(</span><span class="s">&quot;EDF variance =&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">var_EDF</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> <span class="s">&quot;&lt;&quot;</span><span class="p">,</span> <span class="nf">round</span><span class="p">(</span><span class="n">sigma^2</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> <span class="s">&quot;Normal CDF variance&quot;</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -13839,7 +13839,7 @@ First, note that EDF variance is not equal to Normal CDF variance:</p>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[1] &#34;EDF variance = 0.001269 &gt; 0.001282 Normal CDF variance&#34;
+<pre>[1] &#34;EDF variance = 0.001269 &lt; 0.001282 Normal CDF variance&#34;
 </pre>
 </div>
 </div>
