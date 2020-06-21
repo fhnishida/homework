@@ -4,7 +4,7 @@
 
 <title>ex_8-28_Dadvison-MacKinnon</title>
 
-<script type="text/javascript" src="http://ff.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=A38S1GpJmq5AUzCuGrU6OAJ5cQjw64A1bCYA3_rxi9R6IuWsYVF2Q-2KUV8e2CvFfNJcqaZl4gHUnPk1yHPfWmDmnTgBxZ6ZQXrQBINTyf_ED1PKAWAD7AfjH0Rs-mhtPT_Pd0hfoQKJTJepfFI0gLX4DhYtP3XMZshgBXACJn3BdGdnsz8kbYk9td7pF-4AFDKrTAD4vxxBaGXZbN4I8g" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<script type="text/javascript" src="http://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=w1BtrCyup0MX-Qjv_yIaVGnsfVI9cyBZtg7TNJdMcfKopmYW7S-f_4MoFMMr1Kq5yLG7TAKr94SBfyKdxH6Rk1142Eq-AHBfiUVqeauS62V_y7kjk7E8Gl1T1x6MiBLEtxRYCGBnZvvd7OGOu0RE8FPnmwKdtN2t1-cozh6SwMi8A3h9Q6w5JlGiQj21juaGNL-TXKnfg9SvH2zg16az4g" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
@@ -13169,8 +13169,8 @@ div#notebook {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Regression-in-the-direct-order-($q_t$-as-dependent-variable)">Regression in the direct order ($q_t$ as dependent variable)<a class="anchor-link" href="#Regression-in-the-direct-order-($q_t$-as-dependent-variable)">&#182;</a></h4><p>We will begin by  modelling the regression in the given (direct) order:
-$$q_t=β_1+β_2 x_{t2}+β_3 x_{t3}+γp_t+u_t.\ \ \ \ \ \ \ \ \ \ \ \ \color{red}{(1)}$$
+<h3 id="Regression-of-the-direct-model-$\color{red}{(1)}$-($q_t$-as-dependent-variable-and-$p_t$-as-a-regressor)">Regression of the direct model $\color{red}{(1)}$ ($q_t$ as dependent variable and $p_t$ as a regressor)<a class="anchor-link" href="#Regression-of-the-direct-model-$\color{red}{(1)}$-($q_t$-as-dependent-variable-and-$p_t$-as-a-regressor)">&#182;</a></h3><p>We will begin by  modelling the regression in the given (direct) order:
+$$ \normalsize q_t=β_1+β_2 x_{t2}+β_3 x_{t3}+γp_t+u_t.\ \ \ \ \ \ \ \ \ \ \ \ \color{red}{(1)}$$
 First, by estimating by Ordinary Least Squares (OLS), we have:</p>
 
 </div>
@@ -13235,10 +13235,10 @@ F-statistic:   116 on 3 and 116 DF,  p-value: &lt; 2.2e-16
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Then, we will perform the regression by 2SLS, that is, considering instrumental variable (IV) and modelling through a 2-step-process:
-<br>
-Step 1: Regress the independent variable $(p_t)$ by its instrumental variables $(x_{t4}\text{ and }x_{t5})$ and other independent variables being used in the original model $(x_{t2}\text{ and }x_{t3})$. Get the generated fitted values ${\hat p_t}$.
-<br>
-Step 2: Regress the original model, but, instead of using observed $p_t$, we will use the obtained fitted ${\hat p_t}$.</p>
+<br><br>
+$\text{Step 1:}$ Regress the independent variable $(p_t)$ by its instrumental variables $(x_{t4}\text{ and }x_{t5})$ and other independent variables being used in the original model $(x_{t2}\text{ and }x_{t3})$. Get the generated fitted values ${\hat p_t}$.
+<br><br>
+$\text{Step 2:}$ Regress the original model, but, instead of using observed $p_t$, we will use the obtained fitted ${\hat p_t}$.</p>
 
 </div>
 </div>
@@ -13477,8 +13477,8 @@ $$ \text{Sargan }t \text{-statistic}=n.R^2 \ \sim \ \chi^2(1) $$</p>
 <p>Since p-value is 0.00138, it is not significant, so the 2SLS estimation is valid in this case.
 <br>
 <br></p>
-<h4 id="Regression-in-the-inverse-order-($p_t$-as-dependent-variable,-$q_t$-is-a-regressor-now-)">Regression in the inverse order ($p_t$ as dependent variable, $q_t$ is a regressor now )<a class="anchor-link" href="#Regression-in-the-inverse-order-($p_t$-as-dependent-variable,-$q_t$-is-a-regressor-now-)">&#182;</a></h4><p>We will begin by  modelling the regression in the given (direct) order:
-$$p_t=β'_1+β'_2 x_{t2}+β'_3 x_{t3}+γ'q_t+u'_t,\ \ \ \ \ \ \ \ \ \ \ \ \color{red}{(2)}.$$
+<h3 id="Regression-of-the-inverse-model-$\color{red}{(2)}$--($p_t$-as-dependent-variable-and-$q_t$-as-a-regressor-now)">Regression of the inverse model $\color{red}{(2)}$  ($p_t$ as dependent variable and $q_t$ as a regressor now)<a class="anchor-link" href="#Regression-of-the-inverse-model-$\color{red}{(2)}$--($p_t$-as-dependent-variable-and-$q_t$-as-a-regressor-now)">&#182;</a></h3><p>We will begin by  modelling the regression in the given (direct) order:
+$$\normalsize p_t=β'_1+β'_2 x_{t2}+β'_3 x_{t3}+γ'q_t+u'_t,\ \ \ \ \ \ \ \ \ \ \ \ \color{red}{(2)}$$
 First, by estimating by Ordinary Least Squares (OLS), we have:</p>
 
 </div>
@@ -13858,7 +13858,7 @@ Gamma(log_price)     -0.3951      -0.5936      -0.5813       -0.5961
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From the data frame with the direct estimative above, we can observe that three $\gamma$ coefficients (related to the independent variable $p_t$) are pretty close and only the one obtained from the direct OLS model is quite dicrepant. This pattern also holds for the $\beta_1, \beta_2$ and $\beta_3$ estimatives. It is no coincidence, since it was the only model that was reject by the DWH (the other three was not reject by DWH and Sargan tests).
 <br>
-This seems to happen because the direct OLS model (1) use $p_t$ as independent variable and it seems to be correlated with the error term $u_t$, that is correct when performing the 2SLS regression in the direct model $(1)$, which is a valid model.
+This seems to happen because the direct OLS model $(1)$ uses $p_t$ as independent variable and it seems to be correlated with the error term $u_t$, that is correct when performing the 2SLS regression in the direct model $(1)$, which is a valid model.
 <br>
 On the other hand, when performing the inverse model $(2)$, with $q_t$ as independent variable,  $q_t$ seems to be only weakly correlated with the error term $u'_t$, even in the OLS model $(2)$ since it was not reject with DWH test. Therefore, its estimatives are pretty close the the 2SLS inverse model $(2)$, which is also a consistent model.</p>
 
